@@ -9,7 +9,7 @@
  
 <body>
     <header>
-        <img src="img/logo-big-v4.png" alt="">
+        <img src="logo-big-v4.png" alt="">
     </header>
     <main>
         <div class="container">
