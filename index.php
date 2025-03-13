@@ -29,19 +29,22 @@
             }
 
             // De SQL-query om gegevens op te halen, inclusief afdeling
-            $sql = "SELECT titel, status, afdeling, deadline FROM taken WHERE status <> 'done'";  // Alleen taken met status niet 'done'
+            $sql = "SELECT id, titel, status, afdeling, deadline FROM taken WHERE status <> 'done'";  // Alleen taken met status niet 'done'
             $stmt = $pdo->query($sql);
 
             // De tabel genereren
-            echo "<table border='1'>";
-            echo "<tr><th>Titel</th><th>Status</th><th>Afdeling</th><th>Deadline</th></tr>";  // Voeg afdeling toe als kolom
+            echo "<table border='1' style='width: 100%; border-collapse: collapse;'>";
+            echo "<tr><th>Titel</th><th>Status</th><th>Afdeling</th><th>Deadline</th><th>Actie</th></tr>";  // Voeg een kolom voor acties toe
 
             // Controleer of er gegevens zijn en geef ze weer
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo "<tr><td>" . htmlspecialchars($row['titel']) . "</td>
+                echo "<tr>
+                          <td>" . htmlspecialchars($row['titel']) . "</td>
                           <td>" . htmlspecialchars($row['status']) . "</td>
                           <td>" . htmlspecialchars($row['afdeling']) . "</td>
-                          <td>" . htmlspecialchars($row['deadline']) . "</td></tr>";  // Toon de datum in de tabel
+                          <td>" . htmlspecialchars($row['deadline']) . "</td>
+                          <td><a href='delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Weet je zeker dat je deze taak wilt verwijderen?\")'>Verwijderen</a></td>
+                      </tr>";  // Voeg de verwijderknop toe
             }
 
             echo "</table>";
