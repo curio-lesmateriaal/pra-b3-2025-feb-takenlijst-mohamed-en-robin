@@ -1,8 +1,13 @@
 <?php
+$host = 'localhost'; // Gebruik hier de juiste host
+$dbname = 'takenlijst mohamed en robin'; // De naam van je database. naam van jowy zit er niet bij doordat hij gemaakt was toen hij er niet was
+$username = 'root'; // Je database gebruikersnaam
+$password = ''; // Je database wachtwoord
 
-//Haal de configuratie op
-require_once 'config.php';
-
-//Met behulp van PDO zetten we de connectie op, waarna we met setAttribute de manier van errormeldingen weergeven bepalen.
-$conn = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Verbinding mislukt: " . $e->getMessage());
+}
+?>
