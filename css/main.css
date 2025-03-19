@@ -1,4 +1,3 @@
-/* Algemene pagina-instellingen */
 html, body {
   margin: 0;
   padding: 0;
@@ -8,13 +7,11 @@ html, body {
   flex-direction: column;
 }
 
-/* Header Styling */
 header {
   width: 100%;
   background-color: lightskyblue;
   padding: 40px;
   text-align: center;
-  border-radius: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   position: relative;
@@ -28,45 +25,60 @@ header img {
   height: auto;
 }
 
-/* Main Styling */
+header a {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: white;
+  text-decoration: underline;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  transition: color 0.3s ease;
+}
+
+header a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 main {
   flex: 1;
   padding: 20px;
 }
 
-/* Footer Styling */
 footer {
   background-color: lightskyblue;
   width: 100%;
   padding: 20px;
   text-align: center;
-  border-radius: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
 }
 
-/* Tabel Styling */
 table {
-  width: 80%; /* De tabel neemt 80% van de breedte van de pagina in */
-  margin: 20px auto; /* Centrer de tabel horizontaal */
-  border-collapse: collapse; /* Zorg ervoor dat de randen van de cellen samensmelten */
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
 }
 
 th, td {
-  padding: 10px; /* Voeg ruimte binnen de cellen toe */
-  text-align: left; /* Zorg ervoor dat de tekst in de cellen links uitgelijnd is */
-  border: 1px solid #ddd; /* Voeg een lichte rand toe rond de cellen */
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
 }
 
 th {
-  background-color: #f2f2f2; /* Achtergrondkleur voor de koptekst */
-  font-weight: bold; /* Maak de tekst in de koptekst vet */
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9; /* Zorg voor een lichte achtergrondkleur voor even rijen */
+  background-color: #f9f9f9;
 }
 
 tr:hover {
-  background-color: #ddd; /* Achtergrondkleur verandert wanneer je met de muis over een rij beweegt */
+  background-color: #ddd;
 }

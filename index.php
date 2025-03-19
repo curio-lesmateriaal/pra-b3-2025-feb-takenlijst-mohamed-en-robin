@@ -5,11 +5,13 @@
     <title>takenlijst</title>
     <?php require_once 'head.php'; ?>
     <link rel="stylesheet" href="css/main.css">
+    
 </head>
  
 <body>
     <header>
         <img src="logo-big-v4.png" alt="">
+        <a href="inloggen">inloggen</a>
     </header>
     <main>
         <div class="container">
@@ -52,7 +54,7 @@
         </div>
     </main>
     <footer>
-        <p>&copy; 2025 Takenlijst</p>
+        <p>jowy,Mohamed,Robin</p>
     </footer>
 </body>
 </html>
