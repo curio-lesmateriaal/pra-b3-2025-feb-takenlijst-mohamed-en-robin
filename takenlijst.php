@@ -11,7 +11,7 @@
 <body>
     <header>
         <img src="logo-big-v4.png" alt="">
-        <a href="inloggen">inloggen</a>
+        <a href="inloggen">Inloggen</a>
     </header>
     <main>
         <div class="container">

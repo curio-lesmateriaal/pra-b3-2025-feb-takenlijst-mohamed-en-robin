@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <img src="logo-big-v4.png" alt="Pretpark Logo" style="width: 150px;">
+        <img src="logo-big-v4.png" alt="Pretpark Logo">
         <a href="inloggen" class="btn">Inloggen</a>
     </header>
     <main>
