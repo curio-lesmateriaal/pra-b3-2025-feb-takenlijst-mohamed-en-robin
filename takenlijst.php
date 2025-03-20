@@ -13,7 +13,8 @@
     <main>
         <div class="container">
             <h1>Takenlijst</h1>
-            <p>Hieronder staan alle taken die gemaakt worden,nog gemaakt moeten worden en gemaakt zijn:</p>
+            <p>Hieronder staan alle taken die gemaakt worden, nog gemaakt moeten worden en gemaakt zijn:</p>
+            <a href="resource/views/meldingen/create.php" class="btn">Nieuwe Taak Aanmaken</a> <!-- Knop voor nieuwe taak -->
 
             <?php
             require 'backend/conn.php';
@@ -29,7 +30,10 @@
                         <td>{$row['status']}</td>
                         <td>{$row['afdeling']}</td>
                         <td>{$row['deadline']}</td>
-                        <td><a href='delete.php?id={$row['id']}' onclick='return confirm(\"Weet je zeker dat je deze taak wilt verwijderen?\")'>Verwijderen</a></td>
+                        <td>
+                            <a href='delete.php?id={$row['id']}' onclick='return confirm(\"Weet je zeker dat je deze taak wilt verwijderen?\")'>Verwijderen</a>
+                            <a href='resource/views/meldingen/edit.php?id={$row['id']}'>Bewerken</a> <!-- Knop voor bewerken -->
+                        </td>
                       </tr>";
             }
 
