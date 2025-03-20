@@ -2,6 +2,7 @@
 <html lang="nl">
 <head>
     <title>Home - Takenlijst</title>
+    <a href="path/to/nieuwetaak.php">Nieuwe Taak Aanmaken</a>
     <?php require_once 'head.php'; ?>
     <link rel="stylesheet" href="css/main.css">
 </head>
