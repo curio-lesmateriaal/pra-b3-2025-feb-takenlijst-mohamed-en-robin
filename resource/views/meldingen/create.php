@@ -3,7 +3,7 @@
 <html lang="nl">
 
 <head>
-    <title>takenlijst/ taak /Nieuwe< taken/title>
+    <title>Takenlijst | Nieuwe Taak</title>
     <?php require_once __DIR__.'/../components/head.php'; ?>
 </head>
 
@@ -22,38 +22,42 @@
                 <label for="titel">Naam titel:</label>
                 <input type="text" name="titel" id="titel" class="form-input">
             </div>
+
             <div class="form-group">
                 <label for="afdeling">Type</label>
-                <!-- hier komt een dropdown -->
-             <select name="afdeling" >
-            <option value="personeel">personeel</option>
-            <option value="horeca">Horeca</option>
-            <option value="techniek">techniek</option>
-            <option value="inkoop">inkoop</option>
-            <option value="Klantenservice ">Klantenservice </option>
-            <option value="groen">groen</option>
-            <option value="overig">Overig</option>
-             </select>
-             <div>
-             <data class=" prioriteit"></data>
-             <label for= " prioriteit">prioriteit</label>
-             <input type="checkbox" name=" prioriteit">
-             <label for=" prioriteit">is deze taak belangrijk</label>
-             </div>
-
+                <select name="afdeling">
+                    <option value="personeel">Personeel</option>
+                    <option value="horeca">Horeca</option>
+                    <option value="techniek">Techniek</option>
+                    <option value="inkoop">Inkoop</option>
+                    <option value="klantenservice">Klantenservice</option>
+                    <option value="groen">Groen</option>
+                    <option value="overig">Overig</option>
+                </select>
             </div>
-            
+
+            <div class="form-group">
+                <label for="prioriteit">Prioriteit:</label>
+                <input type="checkbox" name="prioriteit" id="prioriteit">
+                <label for="prioriteit">Is deze taak belangrijk?</label>
+            </div>
+
             <div class="form-group">
                 <label for="melder">Naam melder:</label>
                 <input type="text" name="melder" id="melder" class="form-input">
             </div>
-            <div class= "form-group">
-            <label for="overig">informatie taak:</label>
-        <textarea name="overig" id="overig" class="form-input" rows="4"></textarea>
-        </div>
 
-           <div>
-            <input type="submit" value="maak taak aan">
+            <div class="form-group">
+                <label for="overig">Informatie taak:</label>
+                <textarea name="overig" id="overig" class="form-input" rows="4"></textarea>
             </div>
+
+            <div>
+                <input type="submit" value="Maak taak aan">
+            </div>
+
+        </form>
+    </div>
+
 </body>
 </html>
