@@ -1,5 +1,3 @@
-
-
 require_once __DIR__.'/../../../config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create') {
@@ -10,10 +8,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $overig = $_POST['overig'] ?? '';
 
     if (!empty($titel) && !empty($melder)) {
-        $stmt = $pdo->prepare("INSERT INTO taken (titel, afdeling, prioriteit, melder, overig) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$titel, $afdeling, $prioriteit, $melder, $overig]);
+        try {
+            $stmt = $pdo->prepare("INSERT INTO taken (titel, afdeling, prioriteit, melder, overig) VALUES (?, ?, ?, ?, ?)");
+            $result = $stmt->execute([$titel, $afdeling, $prioriteit, $melder, $overig]);
 
-        header("Location: ".$base_url."/takenlijst.php");
-        exit;
+            if ($result) {
+                header("Location: ".$base_url."/takenlijst.php");
+                exit;
+            } else {
+                echo "Er is iets misgegaan bij het toevoegen van de taak.";
+            }
+        } catch (Exception $e) {
+            echo "Fout bij het uitvoeren van de query: " . $e->getMessage();
+        }
     } else {
-        echo "Vul alle verplichte velden in!";   
+        echo "Vul alle verplichte velden in!";
+    }
+}
