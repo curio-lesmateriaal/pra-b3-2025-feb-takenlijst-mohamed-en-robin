@@ -1,11 +1,11 @@
 <?php
 
-function connectToDatabase() {
+function connectDatabase() {
     require_once '../../../backend/conn.php';
     return $conn;
 }
 
-function handleErrors($errors) {
+function handleValidationErrors($errors) {
     if (count($errors) > 0) {
         echo "<ul>";
         foreach ($errors as $error) {
@@ -16,32 +16,32 @@ function handleErrors($errors) {
     }
 }
 
-function insertTask($title, $content, $department) {
-    $conn = connectToDatabase();
-    $query = "INSERT INTO taken (titel, beschrijving, afdeling) VALUES(:title, :content, :department)";
+function addNewTask($title, $description, $department) {
+    $conn = connectDatabase();
+    $query = "INSERT INTO taken (titel, beschrijving, afdeling) VALUES(:title, :description, :department)";
     $statement = $conn->prepare($query);
     $statement->execute([
         ":title" => $title,
-        ":content" => $content,
+        ":description" => $description,
         ":department" => $department
     ]);
 }
 
-function updateTask($id, $title, $content, $department, $status) {
-    $conn = connectToDatabase();
-    $query = "UPDATE taken SET titel = :title, beschrijving = :content, afdeling = :department, status = :status WHERE id = :id";
+function modifyTask($id, $title, $description, $department, $status) {
+    $conn = connectDatabase();
+    $query = "UPDATE taken SET titel = :title, beschrijving = :description, afdeling = :department, status = :status WHERE id = :id";
     $statement = $conn->prepare($query);
     $statement->execute([
         ":title" => $title,
-        ":content" => $content,
+        ":description" => $description,
         ":department" => $department,
         ":status" => $status,
         ":id" => $id
     ]);
 }
 
-function deleteTask($id) {
-    $conn = connectToDatabase();
+function removeTask($id) {
+    $conn = connectDatabase();
     $query = "DELETE FROM taken WHERE id = :id";
     $statement = $conn->prepare($query);
     $statement->execute([":id" => $id]);
@@ -52,19 +52,19 @@ $errors = [];
 
 if ($action == "create") {
     $title = $_POST['title'];
-    $content = $_POST['content'];
+    $description = $_POST['content'];
     $department = $_POST['department'];
 
     if (empty($title)) {
         $errors[] = "De titel van de taak is verplicht.";
     }
 
-    if (empty($content)) {
+    if (empty($description)) {
         $errors[] = "Een geldige beschrijving is verplicht.";
     }
 
-    handleErrors($errors);
-    insertTask($title, $content, $department);
+    handleValidationErrors($errors);
+    addNewTask($title, $description, $department);
     header("Location: ../../../tasks/index.php?msg=Taak succesvol toegevoegd");
     exit();
 }
@@ -72,7 +72,7 @@ if ($action == "create") {
 if ($action == "edit") {
     $id = $_POST['id'];
     $title = $_POST['title'];
-    $content = $_POST['content'];
+    $description = $_POST['content'];
     $department = $_POST['department'];
     $status = $_POST['status'];
 
@@ -80,19 +80,19 @@ if ($action == "edit") {
         $errors[] = "De titel van de taak is verplicht.";
     }
 
-    if (empty($content)) {
+    if (empty($description)) {
         $errors[] = "Een geldige beschrijving is verplicht.";
     }
 
-    handleErrors($errors);
-    updateTask($id, $title, $content, $department, $status);
+    handleValidationErrors($errors);
+    modifyTask($id, $title, $description, $department, $status);
     header("Location: ../../../meldingen/index.php?msg=Taak succesvol aangepast");
     exit();
 }
 
 if ($action == "delete") {
     $id = $_POST['id'];
-    deleteTask($id);
+    removeTask($id);
     header("Location: ../../../meldingen/index.php?msg=Taak succesvol verwijderd");
     exit();
 }

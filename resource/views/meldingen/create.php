@@ -15,14 +15,11 @@
         <h1>Nieuwe taak</h1>
 
         <form action="<?php echo $base_url; ?>/app/Http/Controllers/meldingenController.php" method="POST">
-
             <input type="hidden" name="action" value="create">
-
             <div class="form-group">
                 <label for="titel">Naam titel:</label>
                 <input type="text" name="titel" id="titel" class="form-input">
             </div>
-
             <div class="form-group">
                 <label for="afdeling">Type</label>
                 <select name="afdeling">
@@ -35,27 +32,22 @@
                     <option value="overig">Overig</option>
                 </select>
             </div>
-
             <div class="form-group">
                 <label for="prioriteit">Prioriteit:</label>
                 <input type="checkbox" name="prioriteit" id="prioriteit">
                 <label for="prioriteit">Is deze taak belangrijk?</label>
             </div>
-
             <div class="form-group">
                 <label for="melder">Naam melder:</label>
                 <input type="text" name="melder" id="melder" class="form-input">
             </div>
-
             <div class="form-group">
                 <label for="overig">Informatie taak:</label>
                 <textarea name="overig" id="overig" class="form-input" rows="4"></textarea>
             </div>
-
             <div>
                 <input type="submit" value="Maak taak aan">
             </div>
-
         </form>
     </div>
 
