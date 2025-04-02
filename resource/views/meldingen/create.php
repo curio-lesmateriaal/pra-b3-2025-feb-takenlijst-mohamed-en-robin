@@ -1,15 +1,16 @@
-<?php require_once __DIR__.'/../../../config/config.php'; ?>
+<?php require_once __DIR__.'/../../../head.php'; ?>
+
 <!doctype html>
 <html lang="nl">
 
 <head>
     <title>Takenlijst | Nieuwe Taak</title>
-    <?php require_once __DIR__.'/../components/head.php'; ?>
+    <?php require_once __DIR__.'/../../../head.php'; ?>
 </head>
 
 <body>
 
-    <?php require_once __DIR__.'/../components/header.php'; ?>
+<?php require_once __DIR__.'/../../../head.php'; ?>
 
     <div class="container">
         <h1>Nieuwe taak</h1>
