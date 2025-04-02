@@ -1,4 +1,5 @@
-<?php require_once __DIR__.'/../../../backend/config.php'; ?>
+<?php require_once __DIR__.'/../../../head.php'; ?>
+
 <!doctype html>
 <html lang="nl">
 
@@ -8,6 +9,8 @@
 </head>
 
 <body>
+
+<?php require_once __DIR__.'/../../../head.php'; ?>
 
     <div class="container">
         <h1>Nieuwe taak</h1>
