@@ -1,27 +1,17 @@
-require_once __DIR__.'/../../../config/config.php';
+<?php
+// Fouten tonen voor debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create') {
-    $titel = $_POST['titel'] ?? '';
-    $afdeling = $_POST['afdeling'] ?? '';
-    $prioriteit = isset($_POST['prioriteit']) ? 1 : 0;
-    $melder = $_POST['melder'] ?? '';
-    $overig = $_POST['overig'] ?? '';
+require_once __DIR__.'/../../../backend/config.php';
 
-    if (!empty($titel) && !empty($melder)) {
-        try {
-            $stmt = $pdo->prepare("INSERT INTO taken (titel, afdeling, prioriteit, melder, overig) VALUES (?, ?, ?, ?, ?)");
-            $result = $stmt->execute([$titel, $afdeling, $prioriteit, $melder, $overig]);
+// Check of de POST-aanvraag correct is
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'create') {
 
-            if ($result) {
-                header("Location: ".$base_url."/takenlijst.php");
-                exit;
-            } else {
-                echo "Er is iets misgegaan bij het toevoegen van de taak.";
-            }
-        } catch (Exception $e) {
-            echo "Fout bij het uitvoeren van de query: " . $e->getMessage();
-        }
-    } else {
-        echo "Vul alle verplichte velden in!";
-    }
+    // Je code voor het toevoegen van de taak (bijv. invoegen in de database)
+    
+    // Als alles goed is gegaan, redirect naar de takenlijstpagina
+    header('Location: ' . $base_url . '/takenlijst.php');
+    exit; // Zorg ervoor dat het script stopt na de redirect
 }
+?>
