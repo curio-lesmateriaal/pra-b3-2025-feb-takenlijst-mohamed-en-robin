@@ -1,14 +1,11 @@
 <?php
     session_start();
     if(!isset($_SESSION['user_id'])){
-    $msg="Je moet eerst inloggen!";
-    header("Location: ../../../resources/views/login/login.php?msg= .$msg ");
-}
+        $msg="Je moet eerst inloggen!";
+        header("Location: ../../../resources/views/login/login.php?msg= .$msg ");
+    }
 ?>
-
-
-
-<?php require_once __DIR__.'/../../../config/config.php'; ?>
+<?php require_once __DIR__.'/../../../backend/config.php'; ?>
 <!doctype html>
 <html lang="nl">
 
