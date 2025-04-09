@@ -13,16 +13,16 @@
     <main>
         <div class="container">
             <h1>Takenlijst</h1>
-            <p>Hieronder staan alle taken die gemaakt worden, nog gemaakt moeten worden en gemaakt zijn:</p>
+            <p>Hieronder staan alle taken die nog niet klaar zijn:</p>
             <a href="resource/views/meldingen/create.php" class="btn">Nieuwe Taak Aanmaken</a>
             <p><a href="resource/views/meldingen/done.php">Bekijk voltooide taken</a></p>
-
 
             <?php
             require 'backend/conn.php';
 
-            $stmt = $pdo->query("SELECT id, titel, beschrijving, afdeling, status, deadline FROM taken");
-            
+        
+            $stmt = $pdo->query("SELECT id, titel, beschrijving, afdeling, status, deadline FROM taken WHERE status <> 'done'");
+
             echo "<table border='1' width='100%'>";
             echo "<tr><th>Titel</th><th>Beschrijving</th><th>Afdeling</th><th>Status</th><th>Deadline</th><th>Actie</th></tr>";
 
