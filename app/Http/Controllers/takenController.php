@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $stmt->execute();
 
            // Harde padstructuur voor de redirect
-        header('Location: http://localhost/pra-b3-2025-feb-takenlijst-mohamed-en-robin-main/pra-b3-2025-feb-takenlijst-mohamed-en-robin-main/takenlijst.php?success=1');
+        header('Location: http://localhost/pra-b3-2025-feb-takenlijst-mohamed-en-robin/pra-b3-2025-feb-takenlijst-mohamed-en-robin/takenlijst.php?success=1');
         exit();
 
 
