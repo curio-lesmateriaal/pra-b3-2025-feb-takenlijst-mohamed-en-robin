@@ -23,12 +23,11 @@ require_once __DIR__.'/../../../backend/config.php';
 
         <?php 
         if (isset($_GET['success']) && $_GET['success'] == 1) {
-            echo '<p class="success-message">Taak succesvol aangemaakt!</p>';  // Succesbericht als taak is aangemaakt
+            echo '<p class="success-message">Taak succesvol aangemaakt!</p>';
         }
         ?>
 
-        
-        <form action="../../../app/Http/Controllers/takenController.php" method="POST"> <!-- Correcte pad naar je takenController -->
+        <form action="../../../app/Http/Controllers/takenController.php" method="POST">
             <input type="hidden" name="action" value="create">
 
             <div class="form-group">
