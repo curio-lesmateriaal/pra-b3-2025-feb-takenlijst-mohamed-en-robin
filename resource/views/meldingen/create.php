@@ -4,7 +4,6 @@ require_once __DIR__.'/../../../backend/config.php';
 
 <!doctype html>
 <html lang="nl">
-
 <head>
     <title>Takenlijst | Nieuwe Taak</title>
     <?php require_once '../../../head.php'; ?> 
@@ -12,10 +11,9 @@ require_once __DIR__.'/../../../backend/config.php';
 </head>
 
 <body>
-
     <header>
-    <img src="../../../logo-big-v4.png" alt="Pretpark Logo"> 
-    <a href="../../../resources/views/login/login.php">Inloggen</a> 
+        <img src="../../../logo-big-v4.png" alt="Pretpark Logo"> 
+        <a href="../../../resources/views/login/login.php">Inloggen</a> 
     </header>
 
     <div class="container">
@@ -27,7 +25,6 @@ require_once __DIR__.'/../../../backend/config.php';
         }
         ?>
 
-        
         <form action="<?php echo $base_url; ?>/app/Http/Controllers/takenController.php" method="POST">
             <input type="hidden" name="action" value="create">
 
@@ -55,15 +52,6 @@ require_once __DIR__.'/../../../backend/config.php';
             </div>
 
             <div class="form-group">
-                <label for="status">Status:</label>
-                <select name="status" id="status" required>
-                    <option value="to do">to do</option>
-                    <option value="in progress">In Progress</option>
-                    <option value="Done">Done</option>
-                </select>
-            </div>
-
-            <div class="form-group">
                 <label for="deadline">Deadline:</label>
                 <input type="date" name="deadline" id="deadline" class="form-input" required>
             </div>
@@ -78,6 +66,5 @@ require_once __DIR__.'/../../../backend/config.php';
         <p>&copy; 2025 Pretpark Takenlijst</p>
         <p>Jowy, Mohamed, Robin</p>
     </footer>
-
 </body>
 </html>
