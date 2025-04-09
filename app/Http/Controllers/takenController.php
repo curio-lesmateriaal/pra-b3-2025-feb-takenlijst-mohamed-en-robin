@@ -27,11 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             $stmt->bindParam(':deadline', $deadline);
             $stmt->execute();
 
-           // Harde padstructuur voor de redirect
-        header('Location: http://localhost/pra-b3-2025-feb-takenlijst-mohamed-en-robin/pra-b3-2025-feb-takenlijst-mohamed-en-robin/takenlijst.php?success=1');
-        exit();
-
-
+            // Gebruik de basis-URL uit config.php voor de redirect
+            header('Location: ' . $base_url . '/takenlijst.php?success=1');
+            exit();
         } catch (PDOException $e) {
             echo "Fout bij het toevoegen van de taak: " . $e->getMessage();
         }
