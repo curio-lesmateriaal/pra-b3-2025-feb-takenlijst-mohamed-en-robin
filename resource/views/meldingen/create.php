@@ -59,7 +59,7 @@ require_once __DIR__.'/../../../backend/config.php';
                 <select name="status" id="status" required>
                     <option value="open">Open</option>
                     <option value="in_progress">In Progress</option>
-                    <option value="closed">Closed</option>
+                    <option value="Done">Done</option>
                 </select>
             </div>
 

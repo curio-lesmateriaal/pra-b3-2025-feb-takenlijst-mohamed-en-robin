@@ -58,7 +58,7 @@
                 <select name="status" id="status" required>
                     <option value="open" <?php if ($task['status'] == 'open') echo 'selected'; ?>>Open</option>
                     <option value="in_progress" <?php if ($task['status'] == 'in_progress') echo 'selected'; ?>>In Progress</option>
-                    <option value="closed" <?php if ($task['status'] == 'closed') echo 'selected'; ?>>Closed</option>
+                    <option value="Done" <?php if ($task['status'] == 'Done') echo 'selected'; ?>>Done</option>
                 </select>
             </div>
 
