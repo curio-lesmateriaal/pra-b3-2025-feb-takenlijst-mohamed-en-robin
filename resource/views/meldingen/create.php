@@ -1,27 +1,34 @@
-<?php require_once __DIR__.'/../../../head.php'; ?>
+<?php 
+require_once __DIR__.'/../../../backend/config.php';  
+?>
 
 <!doctype html>
 <html lang="nl">
 
 <head>
     <title>Takenlijst | Nieuwe Taak</title>
-    <?php require_once __DIR__.'/../../../head.php'; ?>
-    <!-- Verkeerde pad naar de CSS kan worden gecorrigeerd -->
-    <link rel="stylesheet" href="<?php echo $base_url; ?>/css/main.css"> <!-- Zorg ervoor dat het pad naar je CSS goed is -->
+    <?php require_once '../../../head.php'; ?> 
+    <link rel="stylesheet" href="../../../css/main.css"> 
 </head>
 
 <body>
 
     <header>
-        <!-- Zorg ervoor dat het logo goed geladen wordt -->
-        <img src="<?php echo $base_url; ?>/logo-big-v4.png" alt="Pretpark Logo">
-        <a href="<?php echo $base_url; ?>/inloggen" class="btn">Inloggen</a>
+    <img src="../../../logo-big-v4.png" alt="Pretpark Logo"> 
+    <a href="../../../resources/views/login/login.php">Inloggen</a> 
     </header>
 
     <div class="container">
         <h1>Nieuwe taak</h1>
 
-        <form action="<?php echo $base_url; ?>/app/Http/Controllers/takencontroller.php" method="POST">
+        <?php 
+        if (isset($_GET['success']) && $_GET['success'] == 1) {
+            echo '<p class="success-message">Taak succesvol aangemaakt!</p>';  // Succesbericht als taak is aangemaakt
+        }
+        ?>
+
+        
+        <form action="../../../app/Http/Controllers/takenController.php" method="POST"> <!-- Correcte pad naar je takenController -->
             <input type="hidden" name="action" value="create">
 
             <div class="form-group">
@@ -30,7 +37,7 @@
             </div>
 
             <div class="form-group">
-                <label for="afdeling">Afdeling</label>
+                <label for="afdeling">Afdeling:</label>
                 <select name="afdeling" required>
                     <option value="personeel">Personeel</option>
                     <option value="horeca">Horeca</option>
