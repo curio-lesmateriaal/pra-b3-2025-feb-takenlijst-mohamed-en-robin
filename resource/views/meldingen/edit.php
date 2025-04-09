@@ -56,7 +56,7 @@
             <div class="form-group">
                 <label for="status">Status:</label>
                 <select name="status" id="status" required>
-                    <option value="open" <?php if ($task['status'] == 'open') echo 'selected'; ?>>Open</option>
+                    <option value="to do" <?php if ($task['status'] == 'to do') echo 'selected'; ?>>to do</option>
                     <option value="in progress" <?php if ($task['status'] == 'in progress') echo 'selected'; ?>>In Progress</option>
                     <option value="Done" <?php if ($task['status'] == 'Done') echo 'selected'; ?>>Done</option>
                 </select>

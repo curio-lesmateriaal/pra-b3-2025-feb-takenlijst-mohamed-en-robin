@@ -57,7 +57,7 @@ require_once __DIR__.'/../../../backend/config.php';
             <div class="form-group">
                 <label for="status">Status:</label>
                 <select name="status" id="status" required>
-                    <option value="open">Open</option>
+                    <option value="to do">to do</option>
                     <option value="in progress">In Progress</option>
                     <option value="Done">Done</option>
                 </select>

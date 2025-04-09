@@ -14,13 +14,13 @@ $taken = $stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voltooide Taken</title>
-    <link rel="stylesheet" href="../../../css/main.css"> <!-- Vergeet niet je stylesheet toe te voegen -->
+    <link rel="stylesheet" href="../../../css/main.css"> 
 </head>
 <body>
 
     <header>
         <img src="../../../logo-big-v4.png" alt="Pretpark Logo">
-        <a href="../../../takenlijst.php">Terug naar overzicht</a> <!-- Correcte link terug naar overzicht -->
+        <a href="../../../takenlijst.php">Terug naar overzicht</a> 
     </header>
 
     <div class="container">
