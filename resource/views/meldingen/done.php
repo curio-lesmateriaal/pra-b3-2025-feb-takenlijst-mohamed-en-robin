@@ -1,43 +1,57 @@
-<?php 
+<?php
 require_once __DIR__ . '/../../../backend/config.php';
 require_once __DIR__ . '/../../../backend/conn.php';
+
+$sql = "SELECT * FROM taken WHERE status = 'done'";
+$stmt = $pdo->query($sql);
+$taken = $stmt->fetchAll();
+
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-    <title>Takenlijst | Voltooide Taken</title>
-    <?php require_once '../../../head.php'; ?>
-    <link rel="stylesheet" href="../../../css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voltooide Taken</title>
+    <link rel="stylesheet" href="../../../css/main.css"> <!-- Vergeet niet je stylesheet toe te voegen -->
 </head>
 <body>
+
+    <header>
+        <img src="../../../logo-big-v4.png" alt="Pretpark Logo">
+        <a href="../../../takenlijst.php">Terug naar overzicht</a> <!-- Correcte link terug naar overzicht -->
+    </header>
+
     <div class="container">
         <h1>Voltooide Taken</h1>
 
-        <?php
-        // SQL-query om alle taken met de status "done" op te halen
-        $sql = "SELECT titel, afdeling FROM taken WHERE status = 'done'";
+        <?php if (count($taken) > 0): ?>
+            <table class="task-table">
+                <thead>
+                    <tr>
+                        <th>Titel</th>
+                        <th>Afdeling</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($taken as $taak): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($taak['titel']); ?></td>
+                            <td><?php echo htmlspecialchars($taak['afdeling']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>Er zijn geen voltooide taken.</p>
+        <?php endif; ?>
 
-        try {
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            if (count($tasks) > 0) {
-                echo "<ul>";
-                foreach ($tasks as $task) {
-                    echo "<li><strong>" . htmlspecialchars($task['titel']) . "</strong> - " . htmlspecialchars($task['afdeling']) . "</li>";
-                }
-                echo "</ul>";
-            } else {
-                echo "<p>Er zijn geen voltooide taken.</p>";
-            }
-        } catch (PDOException $e) {
-            echo "Fout bij het ophalen van de voltooide taken: " . $e->getMessage();
-        }
-        ?>
-
-        <p><a href="index.php">Terug naar het overzicht</a></p>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Pretpark Takenlijst</p>
+    </footer>
+
 </body>
 </html>

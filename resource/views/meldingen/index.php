@@ -22,7 +22,7 @@
         <h1>taken</h1>
         <a href="create.php">Nieuwe taak aanmaken>> &gt;</a>
         
-        <p><a href="done.php">Bekijk voltooide taken</a></p>
+       
 
 
         <?php if(isset($_GET['msg']))

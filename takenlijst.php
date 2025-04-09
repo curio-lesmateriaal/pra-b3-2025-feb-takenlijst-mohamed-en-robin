@@ -15,6 +15,8 @@
             <h1>Takenlijst</h1>
             <p>Hieronder staan alle taken die gemaakt worden, nog gemaakt moeten worden en gemaakt zijn:</p>
             <a href="resource/views/meldingen/create.php" class="btn">Nieuwe Taak Aanmaken</a>
+            <p><a href="resource/views/meldingen/done.php">Bekijk voltooide taken</a></p>
+
 
             <?php
             require 'backend/conn.php';
