@@ -27,7 +27,8 @@ require_once __DIR__.'/../../../backend/config.php';
         }
         ?>
 
-        <form action="../../../app/Http/Controllers/takenController.php" method="POST">
+        
+        <form action="<?php echo $base_url; ?>/app/Http/Controllers/takenController.php" method="POST">
             <input type="hidden" name="action" value="create">
 
             <div class="form-group">
