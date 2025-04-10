@@ -45,7 +45,7 @@ header a:hover {
 }
 
 main {
-  flex: 1; /* Zorgt ervoor dat main de beschikbare ruimte opvult */
+  flex: 1; 
   padding: 20px;
   box-sizing: border-box;
 }
@@ -57,6 +57,7 @@ footer {
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  margin-top: auto; 
 }
 
 table {
@@ -84,9 +85,9 @@ tr:hover {
   background-color: #ddd;
 }
 
-/* Algemeen voor de tabel */
+
 .task-table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
   margin-top: 20px;
 }
