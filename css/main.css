@@ -37,7 +37,6 @@ header a {
   padding: 0;
   background: none;
   border-radius: 0;
-  transition: color 0.3s ease;
 }
 
 header a:hover {
@@ -46,7 +45,6 @@ header a:hover {
 
 main {
   flex: 1;
-  /* Hier kan eventueel padding of andere stijlen voor de inhoud komen */
 }
 
 footer {
@@ -54,7 +52,7 @@ footer {
   width: 100%;
   padding: 20px;
   text-align: center;
-  margin-top: auto; /* Dit zorgt ervoor dat de footer naar beneden wordt geduwd */
+  margin-top: auto; 
 }
 
 footer p {
@@ -172,23 +170,4 @@ button:hover {
 
 .task-table tr:hover {
   background-color: #f1f1f1;
-}
-
-input:invalid, select:invalid, textarea:invalid {
-  border-color: red;
-}
-
-input:valid, select:valid, textarea:valid {
-  border-color: white;
-}
-
-.alert {
-  background-color: lightgreen;
-  color: green;
-  padding: 15px;
-  margin: 20px 0;
-  border: 1px solid green;
-  border-radius: 5px;
-  text-align: center;
-  font-weight: bold;
 }

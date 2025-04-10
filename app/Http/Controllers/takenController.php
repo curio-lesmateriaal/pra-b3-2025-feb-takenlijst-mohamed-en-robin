@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $beschrijving = $_POST['beschrijving'];
         $afdeling = $_POST['afdeling'];
         $deadline = $_POST['deadline'];
-        $status = 'todo'; // Automatisch op 'todo'
+        $status = 'todo'; 
 
         // Validatie
         if (empty($titel) || empty($beschrijving) || empty($afdeling) || empty($deadline)) {
