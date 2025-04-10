@@ -1,3 +1,66 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  background-color: lightskyblue;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  position: relative;
+}
+
+header img {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 200px;
+  height: auto;
+}
+
+header a {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  color: white;
+  text-decoration: underline;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  transition: color 0.3s ease;
+}
+
+header a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+main {
+  flex: 1;
+  /* Hier kan eventueel padding of andere stijlen voor de inhoud komen */
+}
+
+footer {
+  background-color: lightskyblue;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  margin-top: auto; /* Dit zorgt ervoor dat de footer naar beneden wordt geduwd */
+}
+
+footer p {
+  margin: 5px 0;
+  color: #333;
+}
 
 form {
   width: 80%;
@@ -12,8 +75,17 @@ form {
 
 form h2 {
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  margin-top: auto;
   color: #333;
   margin-bottom: 20px;
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
 }
 
 label {
@@ -21,6 +93,11 @@ label {
   font-size: 16px;
   margin-bottom: 8px;
   color: #555;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
 }
 
 input, select, textarea {
@@ -33,14 +110,27 @@ input, select, textarea {
   font-size: 16px;
 }
 
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
 input:focus, select:focus, textarea:focus {
   border-color: lightskyblue;
   outline: none;
 }
 
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
 textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+tr:hover {
+  background-color: #ddd;
 }
 
 button {
@@ -59,6 +149,31 @@ button:hover {
   background-color: deepskyblue;
 }
 
+.task-table {
+  width: 60%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.task-table th, .task-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.task-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.task-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.task-table tr:hover {
+  background-color: #f1f1f1;
+}
+
 input:invalid, select:invalid, textarea:invalid {
   border-color: red;
 }
@@ -66,6 +181,7 @@ input:invalid, select:invalid, textarea:invalid {
 input:valid, select:valid, textarea:valid {
   border-color: white;
 }
+
 .alert {
   background-color: lightgreen;
   color: green;
@@ -76,4 +192,3 @@ input:valid, select:valid, textarea:valid {
   text-align: center;
   font-weight: bold;
 }
-
