@@ -2,72 +2,73 @@
 require_once __DIR__ . '/../../../backend/config.php';
 require_once __DIR__ . '/../../../backend/conn.php';
 
-// TAAL: NIEUWE TAAK AANMAKEN
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'create') {
-    if (isset($_POST['titel'], $_POST['beschrijving'], $_POST['afdeling'], $_POST['deadline'])) {
-        $titel = $_POST['titel'];
-        $beschrijving = $_POST['beschrijving'];
-        $afdeling = $_POST['afdeling'];
-        $deadline = $_POST['deadline'];
-        $status = 'todo'; 
+// === HULPFUNCTIE: Redirect met foutmelding ===
+function redirectWithError($message) {
+    echo $message;
+    exit;
+}
 
-        // Validatie
-        if (empty($titel) || empty($beschrijving) || empty($afdeling) || empty($deadline)) {
-            echo "Alle velden moeten ingevuld zijn!";
-            exit();
-        }
+// === TAAK AANMAKEN ===
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'create') {
+    $titel = $_POST['titel'] ?? '';
+    $beschrijving = $_POST['beschrijving'] ?? '';
+    $afdeling = $_POST['afdeling'] ?? '';
+    $deadline = $_POST['deadline'] ?? '';
+    $status = 'to do'; // standaardstatus
 
-        $sql = "INSERT INTO taken (titel, beschrijving, afdeling, status, deadline)
-                VALUES (:titel, :beschrijving, :afdeling, :status, :deadline)";
+    if (empty($titel) || empty($beschrijving) || empty($afdeling) || empty($deadline)) {
+        redirectWithError("Alle velden moeten ingevuld zijn!");
+    }
 
-        try {
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':titel', $titel);
-            $stmt->bindParam(':beschrijving', $beschrijving);
-            $stmt->bindParam(':afdeling', $afdeling);
-            $stmt->bindParam(':status', $status);
-            $stmt->bindParam(':deadline', $deadline);
-            $stmt->execute();
+    $sql = "INSERT INTO taken (titel, beschrijving, afdeling, status, deadline)
+            VALUES (:titel, :beschrijving, :afdeling, :status, :deadline)";
 
-            header('Location: http://pra-b3-2025-feb-takenlijst-mohamed-en-robin.test/takenlijst.php?success=1');
-            exit();
-        } catch (PDOException $e) {
-            echo "Fout bij het toevoegen van de taak: " . $e->getMessage();
-        }
-    } else {
-        echo "Niet alle velden zijn ontvangen!";
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':titel' => $titel,
+            ':beschrijving' => $beschrijving,
+            ':afdeling' => $afdeling,
+            ':status' => $status,
+            ':deadline' => $deadline
+        ]);
+        header("Location: {$base_url}/takenlijst.php?success=1");
+        exit;
+    } catch (PDOException $e) {
+        redirectWithError("Fout bij het toevoegen van de taak: " . $e->getMessage());
     }
 }
 
-// TAAK BEWERKEN
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'edit') {
-    if (isset($_POST['id'], $_POST['titel'], $_POST['beschrijving'], $_POST['afdeling'], $_POST['status'], $_POST['deadline'])) {
-        $id = $_POST['id'];
-        $titel = $_POST['titel'];
-        $beschrijving = $_POST['beschrijving'];
-        $afdeling = $_POST['afdeling'];
-        $status = $_POST['status'];
-        $deadline = $_POST['deadline'];
+// === TAAK BEWERKEN ===
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'edit') {
+    $id = $_POST['id'] ?? '';
+    $titel = $_POST['titel'] ?? '';
+    $beschrijving = $_POST['beschrijving'] ?? '';
+    $afdeling = $_POST['afdeling'] ?? '';
+    $status = $_POST['status'] ?? '';
+    $deadline = $_POST['deadline'] ?? '';
 
-        try {
-            $sql = "UPDATE taken SET titel = :titel, beschrijving = :beschrijving, 
-                    afdeling = :afdeling, status = :status, deadline = :deadline 
-                    WHERE id = :id";
-            
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([
-                ':id' => $id,
-                ':titel' => $titel,
-                ':beschrijving' => $beschrijving,
-                ':afdeling' => $afdeling,
-                ':status' => $status,
-                ':deadline' => $deadline
-            ]);
+    if (empty($id) || empty($titel) || empty($beschrijving) || empty($afdeling) || empty($status) || empty($deadline)) {
+        redirectWithError("Alle velden moeten ingevuld zijn!");
+    }
 
-            header('Location: http://pra-b3-2025-feb-takenlijst-mohamed-en-robin.test/takenlijst.php?success=1');
-            exit();
-        } catch (PDOException $e) {
-            echo "Fout bij het bijwerken van de taak: " . $e->getMessage();
-        }
+    $sql = "UPDATE taken 
+            SET titel = :titel, beschrijving = :beschrijving, afdeling = :afdeling, status = :status, deadline = :deadline 
+            WHERE id = :id";
+
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':id' => $id,
+            ':titel' => $titel,
+            ':beschrijving' => $beschrijving,
+            ':afdeling' => $afdeling,
+            ':status' => $status,
+            ':deadline' => $deadline
+        ]);
+        header("Location: {$base_url}/takenlijst.php?success=1");
+        exit;
+    } catch (PDOException $e) {
+        redirectWithError("Fout bij het bijwerken van de taak: " . $e->getMessage());
     }
 }

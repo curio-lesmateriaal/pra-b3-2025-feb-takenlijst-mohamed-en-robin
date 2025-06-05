@@ -1,10 +1,11 @@
 <?php 
-require_once __DIR__.'/../../../backend/config.php';  
+require_once __DIR__ . '/../../../backend/config.php';  
 ?>
 
 <!doctype html>
 <html lang="nl">
 <head>
+    <meta charset="UTF-8">
     <title>Takenlijst | Nieuwe Taak</title>
     <?php require_once '../../../head.php'; ?> 
     <link rel="stylesheet" href="../../../css/main.css"> 
@@ -29,13 +30,14 @@ require_once __DIR__.'/../../../backend/config.php';
             <input type="hidden" name="action" value="create">
 
             <div class="form-group">
-                <label for="titel">Naam titel:</label>
+                <label for="titel">Titel:</label>
                 <input type="text" name="titel" id="titel" class="form-input" required>
             </div>
 
             <div class="form-group">
                 <label for="afdeling">Afdeling:</label>
-                <select name="afdeling" required>
+                <select name="afdeling" id="afdeling" class="form-input" required>
+                    <option value="" disabled selected>Kies een afdeling</option>
                     <option value="personeel">Personeel</option>
                     <option value="horeca">Horeca</option>
                     <option value="techniek">Techniek</option>
@@ -47,7 +49,7 @@ require_once __DIR__.'/../../../backend/config.php';
             </div>
 
             <div class="form-group">
-                <label for="beschrijving">Beschrijving taak:</label>
+                <label for="beschrijving">Beschrijving:</label>
                 <textarea name="beschrijving" id="beschrijving" class="form-input" rows="4" required></textarea>
             </div>
 
@@ -56,7 +58,7 @@ require_once __DIR__.'/../../../backend/config.php';
                 <input type="date" name="deadline" id="deadline" class="form-input" required>
             </div>
 
-            <div>
+            <div class="form-group">
                 <input type="submit" value="Maak taak aan" class="btn-submit">
             </div>
         </form>

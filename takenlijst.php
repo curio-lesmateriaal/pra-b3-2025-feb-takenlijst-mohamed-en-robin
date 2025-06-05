@@ -20,19 +20,26 @@
             <?php
             require 'backend/conn.php';
 
-        
-            $stmt = $pdo->query("SELECT id, titel, beschrijving, afdeling, status, deadline FROM taken WHERE status <> 'done'");
+            // Taken die nog niet klaar zijn, gesorteerd op deadline
+            $stmt = $pdo->query("SELECT id, titel, beschrijving, afdeling, status, deadline FROM taken WHERE status <> 'done' ORDER BY deadline ASC");
 
             echo "<table border='1' width='100%'>";
-            echo "<tr><th>Titel</th><th>Beschrijving</th><th>Afdeling</th><th>Status</th><th>Deadline</th><th>Actie</th></tr>";
+            echo "<tr>
+                    <th>Titel</th>
+                    <th>Beschrijving</th>
+                    <th>Afdeling</th>
+                    <th>Status</th>
+                    <th>Deadline</th>
+                    <th>Actie</th>
+                  </tr>";
 
             while ($row = $stmt->fetch()) {
                 echo "<tr>
-                        <td>{$row['titel']}</td>
-                        <td>{$row['beschrijving']}</td>
-                        <td>{$row['afdeling']}</td>
-                        <td>{$row['status']}</td>
-                        <td>{$row['deadline']}</td>
+                        <td>" . htmlspecialchars($row['titel']) . "</td>
+                        <td>" . htmlspecialchars($row['beschrijving']) . "</td>
+                        <td>" . htmlspecialchars($row['afdeling']) . "</td>
+                        <td>" . htmlspecialchars($row['status']) . "</td>
+                        <td>" . htmlspecialchars($row['deadline']) . "</td>
                         <td>
                             <a href='delete.php?id={$row['id']}' onclick='return confirm(\"Weet je zeker dat je deze taak wilt verwijderen?\")'>Verwijderen</a>
                             <a href='resource/views/meldingen/edit.php?id={$row['id']}'>Bewerken</a>
