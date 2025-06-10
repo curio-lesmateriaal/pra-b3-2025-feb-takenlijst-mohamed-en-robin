@@ -31,7 +31,7 @@
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($task['id']); ?>">
 
             <div class="form-group">
-                <label for="titel">Naam titel:</label>
+                <label for="titel">Titel:</label>
                 <input type="text" name="titel" id="titel" class="form-input" value="<?php echo htmlspecialchars($task['titel']); ?>" required>
             </div>
 
@@ -49,7 +49,7 @@
             </div>
 
             <div class="form-group">
-                <label for="beschrijving">Beschrijving taak:</label>
+                <label for="beschrijving">Beschrijving:</label>
                 <textarea name="beschrijving" id="beschrijving" class="form-input" rows="4" required><?php echo htmlspecialchars($task['beschrijving']); ?></textarea>
             </div>
 
