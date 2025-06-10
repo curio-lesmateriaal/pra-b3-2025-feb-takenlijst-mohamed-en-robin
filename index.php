@@ -8,7 +8,7 @@
 <body>
     <header>
         <img src="logo-big-v4.png" alt="Pretpark Logo">
-        <a href="inloggen" class="btn">Inloggen</a>
+        <a href="/resource/views/login/login.php" class="btn">Inloggen</a>
     </header>
     <main>
         <div class="container">

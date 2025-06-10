@@ -1,4 +1,10 @@
-<?php require_once __DIR__.'/../../../backend/config.php'; ?>
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../../../resource/views/login/login.php");
+    exit;
+}
+require_once __DIR__.'/../../../backend/config.php'; ?>
 <!doctype html>
 <html lang="nl">
 
@@ -31,7 +37,7 @@
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($task['id']); ?>">
 
             <div class="form-group">
-                <label for="titel">Titel:</label>
+                <label for="titel">Naam titel:</label>
                 <input type="text" name="titel" id="titel" class="form-input" value="<?php echo htmlspecialchars($task['titel']); ?>" required>
             </div>
 
@@ -49,14 +55,14 @@
             </div>
 
             <div class="form-group">
-                <label for="beschrijving">Beschrijving:</label>
+                <label for="beschrijving">Beschrijving taak:</label>
                 <textarea name="beschrijving" id="beschrijving" class="form-input" rows="4" required><?php echo htmlspecialchars($task['beschrijving']); ?></textarea>
             </div>
 
             <div class="form-group">
                 <label for="status">Status:</label>
                 <select name="status" id="status" required>
-                    <option value="to do" <?php if ($task['status'] == 'to do') echo 'selected'; ?>>to do</option>
+                    <option value="open" <?php if ($task['status'] == 'open') echo 'selected'; ?>>Open</option>
                     <option value="in progress" <?php if ($task['status'] == 'in progress') echo 'selected'; ?>>In Progress</option>
                     <option value="Done" <?php if ($task['status'] == 'Done') echo 'selected'; ?>>Done</option>
                 </select>

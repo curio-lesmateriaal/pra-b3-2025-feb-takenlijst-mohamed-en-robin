@@ -1,20 +1,25 @@
 <?php 
 require_once __DIR__ . '/../../../backend/config.php';  
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../../../resource/views/login/login.php");
+    exit;
+}
 ?>
 
 <!doctype html>
 <html lang="nl">
+
 <head>
-    <meta charset="UTF-8">
     <title>Takenlijst | Nieuwe Taak</title>
     <?php require_once '../../../head.php'; ?> 
     <link rel="stylesheet" href="../../../css/main.css"> 
 </head>
 
 <body>
+
     <header>
-        <img src="../../../logo-big-v4.png" alt="Pretpark Logo"> 
-        <a href="../../../resources/views/login/login.php">Inloggen</a> 
+        <img src="../../../logo-big-v4.png" alt="Pretpark Logo">
     </header>
 
     <div class="container">
@@ -26,18 +31,18 @@ require_once __DIR__ . '/../../../backend/config.php';
         }
         ?>
 
+        
         <form action="<?php echo $base_url; ?>/app/Http/Controllers/takenController.php" method="POST">
             <input type="hidden" name="action" value="create">
 
             <div class="form-group">
-                <label for="titel">Titel:</label>
+                <label for="titel">Naam titel:</label>
                 <input type="text" name="titel" id="titel" class="form-input" required>
             </div>
 
             <div class="form-group">
                 <label for="afdeling">Afdeling:</label>
-                <select name="afdeling" id="afdeling" class="form-input" required>
-                    <option value="" disabled selected>Kies een afdeling</option>
+                <select name="afdeling" required>
                     <option value="personeel">Personeel</option>
                     <option value="horeca">Horeca</option>
                     <option value="techniek">Techniek</option>
@@ -49,8 +54,17 @@ require_once __DIR__ . '/../../../backend/config.php';
             </div>
 
             <div class="form-group">
-                <label for="beschrijving">Beschrijving:</label>
+                <label for="beschrijving">Beschrijving taak:</label>
                 <textarea name="beschrijving" id="beschrijving" class="form-input" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select name="status" id="status" required>
+                    <option value="open">Open</option>
+                    <option value="in progress">In Progress</option>
+                    <option value="Done">Done</option>
+                </select>
             </div>
 
             <div class="form-group">
@@ -58,7 +72,7 @@ require_once __DIR__ . '/../../../backend/config.php';
                 <input type="date" name="deadline" id="deadline" class="form-input" required>
             </div>
 
-            <div class="form-group">
+            <div>
                 <input type="submit" value="Maak taak aan" class="btn-submit">
             </div>
         </form>
@@ -68,5 +82,6 @@ require_once __DIR__ . '/../../../backend/config.php';
         <p>&copy; 2025 Pretpark Takenlijst</p>
         <p>Jowy, Mohamed, Robin</p>
     </footer>
+
 </body>
 </html>

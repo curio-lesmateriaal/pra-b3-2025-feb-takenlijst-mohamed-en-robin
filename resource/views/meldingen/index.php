@@ -10,7 +10,7 @@
 <html lang="nl">
 
 <head>
-    <title>StoringApp / Meldingen</title>
+    <title>Takenlijst / Meldingen</title>
     <?php require_once __DIR__.'/../components/head.php'; ?>
 </head>
 

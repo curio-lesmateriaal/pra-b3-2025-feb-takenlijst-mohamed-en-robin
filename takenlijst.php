@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: resource/views/login/login.php");
+    exit;
+}
+
 require 'backend/conn.php';
 ?>
 
@@ -110,7 +116,6 @@ require 'backend/conn.php';
 
 <header>
     <img src="logo-big-v4.png" alt="Pretpark Logo">
-    <a href="inloggen">Inloggen</a>
 </header>
 
 <main class="container">
